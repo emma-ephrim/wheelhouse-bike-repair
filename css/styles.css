@@ -1,0 +1,108 @@
+/* Wheelhouse Bike Repair - Stylesheet */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Tahoma, Geneva, sans-serif;
+  background-color: #ececec;
+}
+
+#topnav {
+  background-color: #1a1a1a;
+  padding: 0;
+  width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#topnav a {
+  display: inline-block;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 14px 22px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+#topnav a:hover {
+  background-color: #e74c3c;
+  color: white;
+}
+
+#headerbanner {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 35px 20px 30px;
+  width: 960px;
+  margin: 0 auto;
+}
+
+#headerbanner h1 {
+  font-size: 34px;
+  margin: 0 0 5px 0;
+  letter-spacing: 2px;
+  color: #f1c40f;
+}
+
+#headerbanner h3 {
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+  color: #bdc3c7;
+  letter-spacing: 1px;
+}
+
+#pagewrap {
+  width: 960px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 25px 30px;
+}
+
+h2 {
+  font-size: 20px;
+  color: #2c3e50;
+  margin-top: 30px;
+  padding-bottom: 6px;
+  border-bottom: 3px solid #e74c3c;
+}
+
+.services-row {
+  overflow: hidden;
+  margin: 20px 0 0 0;
+}
+
+.service-box {
+  float: left;
+  width: 280px;
+  margin-right: 20px;
+  padding: 15px;
+  background-color: #fafafa;
+  font-size: 12px;
+  line-height: 1.6;
+  min-height: 160px;
+}
+
+.service-box:last-child {
+  margin-right: 0;
+}
+
+.service-title {
+  font-size: 14px;
+  color: #2c3e50;
+}
+
+#pagefooter {
+  background-color: #1a1a1a;
+  color: #aaaaaa;
+  text-align: center;
+  font-size: 11px;
+  padding: 14px;
+  width: 960px;
+  margin: 0 auto;
+}
