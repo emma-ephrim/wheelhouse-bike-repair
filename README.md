@@ -6,7 +6,7 @@ This repository contains the mobile-first, semantic rebuild of the Wheelhouse Bi
 
 ## 1. Page Structure Sketch & Rationale
 
-![Mobile Layout Sketch](./sketch.png)
+![Mobile Layout Sketch](./images/sketch.png)
 
 ### Why the Page is Ordered This Way
 
