@@ -297,6 +297,27 @@
         </p>
       </div>
     </footer>
+
+    <script>
+      // Check Kumasi local time to show if the workshop is currently open
+      const statusBanner = document.getElementById("shop-status");
+      if (statusBanner) {
+        const now = new Date();
+        const day = now.getDay(); // 0 is Sunday, 1-6 is Mon-Sat
+        const time = now.getHours() + now.getMinutes() / 60;
+
+        if (day >= 1 && day <= 6 && time >= 8 && time < 17.5) {
+          statusBanner.textContent =
+            "OPEN TODAY UNTIL 5:30 PM • WALK-INS WELCOME";
+          statusBanner.classList.add("status-open");
+        } else {
+          statusBanner.textContent =
+            "CURRENTLY CLOSED • OPENS MON–SAT AT 8:00 AM";
+          statusBanner.classList.add("status-closed");
+        }
+      }
+    </script>
+
     <script src="js/script.js"></script>
   </body>
 </html>
