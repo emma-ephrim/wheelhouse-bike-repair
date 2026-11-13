@@ -29,8 +29,14 @@
     <main>
       <section class="headerbanner">
         <div class="container">
-          <p class="shop-status" id="shop-status">
-            OPEN MON–SAT • 8:00 AM – 5:30 PM
+          <p
+            class="shop-status"
+            id="shop-status"
+            data-open="8"
+            data-close="17.5"
+            data-days="1,2,3,4,5,6"
+          >
+            OPEN MON-SAT • 8:00 AM - 5:30 PM
           </p>
           <h1>Your bike. Back on the road.</h1>
           <p class="hero-sub">
@@ -200,7 +206,7 @@
                 Submit Request
               </button>
             </form>
-            <div id="booking-list"></div>
+            <div id="booking-list" aria-live="polite"></div>
           </div>
         </section>
 
