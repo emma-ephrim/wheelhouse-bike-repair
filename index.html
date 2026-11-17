@@ -14,9 +14,53 @@
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <header class="site-header">
       <div class="container header-bar">
-        <a href="#" class="brand-title">Wheelhouse Bike Repair</a>
+        <a href="#" class="brand-title">
+          <svg
+            class="brand-icon"
+            viewBox="0 0 36 36"
+            fill="none"
+            aria-hidden="true"
+          >
+            <circle cx="18" cy="18" r="15" stroke="#f5c542" stroke-width="3" />
+            <circle cx="18" cy="18" r="3.5" fill="#f5c542" />
+            <line
+              x1="18"
+              y1="3"
+              x2="18"
+              y2="33"
+              stroke="#f5c542"
+              stroke-width="1.6"
+            />
+            <line
+              x1="3"
+              y1="18"
+              x2="33"
+              y2="18"
+              stroke="#f5c542"
+              stroke-width="1.6"
+            />
+            <line
+              x1="7.4"
+              y1="7.4"
+              x2="28.6"
+              y2="28.6"
+              stroke="#f5c542"
+              stroke-width="1.6"
+            />
+            <line
+              x1="28.6"
+              y1="7.4"
+              x2="7.4"
+              y2="28.6"
+              stroke="#f5c542"
+              stroke-width="1.6"
+            />
+          </svg>
+          <span>Wheelhouse Bike Repair</span>
+        </a>
         <div class="header-cta">
           <a href="tel:0322000000" class="btn btn-call">Call Shop</a>
           <a href="https://wa.me/233244000001" class="btn btn-wa">WhatsApp</a>
@@ -24,11 +68,11 @@
       </div>
       <nav class="topnav" aria-label="Main Navigation">
         <div class="container nav-links">
-          <a href="#services">Services</a>
-          <a href="#location">Find Us</a>
-          <a href="#booking">Book Repair</a>
+          <a href="#services">Prices</a>
+          <a href="#about">Why Us</a>
           <a href="#faq">FAQ</a>
-          <a href="#about">About</a>
+          <a href="#location">Find Shop</a>
+          <a href="#booking">Book or Ask</a>
         </div>
       </nav>
     </header>
@@ -36,191 +80,276 @@
     <main id="main-content">
       <section class="headerbanner">
         <div class="container">
-          <p
-            class="shop-status"
-            id="shop-status"
-            data-open="8"
-            data-close="17.5"
-            data-days="1,2,3,4,5,6"
-          >
-            OPEN MON-SAT • 8:00 AM - 5:30 PM
-          </p>
-          <h1>Your bike. Back on the road.</h1>
-          <p class="hero-sub">
-            Fast, reliable bicycle repairs at
-            <strong>Shop 4, Adum Commercial Area, Kumasi</strong>. Walk in for
-            urgent flats and broken chains, or call ahead. All bikes welcome.
-          </p>
-          <div class="hero-actions">
-            <a href="#location" class="btn btn-primary">Get Directions</a>
-            <a href="#services" class="btn btn-outline">View Prices</a>
+          <div class="hero-grid">
+            <div>
+              <p
+                class="shop-status"
+                id="shop-status"
+                data-open="8"
+                data-close="17.5"
+                data-days="1,2,3,4,5,6"
+              >
+                OPEN MON-SAT • 8:00 AM - 5:30 PM
+              </p>
+              <h1>Your bike. Back on the road.</h1>
+              <p class="hero-sub">
+                Trusted bicycle repairs since 2019 at
+                <strong>Shop 4, Adum Commercial Area, Kumasi</strong>. Walk in
+                for urgent flats and broken chains, or call ahead. All bikes
+                welcome.
+              </p>
+              <div class="hero-actions">
+                <a href="#location" class="btn btn-primary">Get Directions</a>
+                <a href="#services" class="btn btn-outline">View Prices</a>
+              </div>
+            </div>
+
+            <div class="hero-illustration" aria-hidden="true">
+              <svg
+                width="260"
+                height="165"
+                viewBox="0 0 260 165"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="58"
+                  cy="112"
+                  r="40"
+                  stroke="#f5c542"
+                  stroke-width="5"
+                />
+                <circle cx="58" cy="112" r="7" fill="#f5c542" />
+                <circle
+                  cx="202"
+                  cy="112"
+                  r="40"
+                  stroke="#f5c542"
+                  stroke-width="5"
+                />
+                <circle cx="202" cy="112" r="7" fill="#f5c542" />
+                <path
+                  d="M58 112L106 52H172L130 112H58Z"
+                  stroke="#ffffff"
+                  stroke-width="5"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M172 52L202 112"
+                  stroke="#ffffff"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M95 52H118"
+                  stroke="#b84312"
+                  stroke-width="7"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M158 36H184L190 46"
+                  stroke="#f5c542"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <line
+                  x1="106"
+                  y1="52"
+                  x2="130"
+                  y2="112"
+                  stroke="#ffffff"
+                  stroke-width="4"
+                />
+              </svg>
+            </div>
           </div>
+
+          <ul class="trust-strip" aria-label="Workshop Trust Highlights">
+            <li>
+              <strong>Fixing Bikes Since 2019</strong>
+              Established Adum workshop trusted by daily commuters and weekend
+              riders.
+            </li>
+            <li>
+              <strong>Kwame Repairs Personally</strong>
+              Every job is done by our head mechanic or directly under his
+              supervision.
+            </li>
+            <li>
+              <strong>Price Approved First</strong>
+              Upfront quotes from GH&#8373; 60. We never touch a spanner without
+              your approval.
+            </li>
+          </ul>
         </div>
       </section>
 
       <div class="container pagewrap">
         <section id="services" class="section-block">
-          <h2>Repair Services &amp; Pricing</h2>
+          <h2>Repair Services &amp; Transparent Pricing</h2>
           <p class="section-intro">
-            We fix all types of bicycles, from quick roadside tune-ups to full
-            rebuilds. Bring your bike in and we will inspect it before starting
-            any work.
+            Compare our upfront starting rates before you walk in. Most common
+            tyre, tube, brake, and chain sizes are kept in stock for same-day
+            turnaround.
           </p>
 
           <div class="services-grid">
             <article class="service-box priority">
-              <h3>Tyre &amp; Tube Replacement</h3>
-              <p>
-                Flat tyre or punctured tube? Front or rear replacement while you
-                wait. We carry most common sizes in stock.
-              </p>
+              <div>
+                <span class="service-badge">Same-Day Urgent Fix</span>
+                <h3>Tyre &amp; Tube Replacement</h3>
+                <p>
+                  Flat tyre or punctured tube? Front or rear replacement while
+                  you wait. We carry most common sizes in stock.
+                </p>
+              </div>
               <p class="service-price">From GH&#8373; 60</p>
             </article>
 
             <article class="service-box priority">
-              <h3>Basic Tune-Up</h3>
-              <p>
-                Brake adjustment, gear indexing, tyre pressure check and general
-                safety inspection. Most bikes done in under an hour.
-              </p>
+              <div>
+                <span class="service-badge">Under 1 Hour</span>
+                <h3>Basic Tune-Up</h3>
+                <p>
+                  Brake adjustment, gear indexing, tyre pressure check and
+                  general safety inspection. Most bikes done in under an hour.
+                </p>
+              </div>
               <p class="service-price">From GH&#8373; 80</p>
             </article>
 
             <article class="service-box priority">
-              <h3>Full Bike Rebuild</h3>
-              <p>
-                Complete strip-down, clean, grease, and rebuild. Best for bikes
-                that have not been serviced in years.
-              </p>
+              <div>
+                <span class="service-badge">Neglected Bikes</span>
+                <h3>Full Bike Rebuild</h3>
+                <p>
+                  Complete strip-down, clean, grease, and rebuild. Best for
+                  bikes that have not been serviced in years.
+                </p>
+              </div>
               <p class="service-price">From GH&#8373; 350</p>
             </article>
 
             <article class="service-box">
-              <h3>Brake Overhaul</h3>
-              <p>
-                Full brake cable and pad replacement, lever adjustment and bleed
-                for hydraulic systems.
-              </p>
+              <div>
+                <h3>Brake Overhaul</h3>
+                <p>
+                  Full brake cable and pad replacement, lever adjustment and
+                  bleed for hydraulic systems.
+                </p>
+              </div>
               <p class="service-price">From GH&#8373; 120</p>
             </article>
 
             <article class="service-box">
-              <h3>Gear System Overhaul</h3>
-              <p>
-                Derailleur alignment, cable replacement, chain and cassette
-                inspection. Includes mechanic test ride.
-              </p>
+              <div>
+                <h3>Gear System Overhaul</h3>
+                <p>
+                  Derailleur alignment, cable replacement, chain and cassette
+                  inspection. Includes mechanic test ride.
+                </p>
+              </div>
               <p class="service-price">From GH&#8373; 150</p>
             </article>
 
             <article class="service-box">
-              <h3>Custom Builds</h3>
-              <p>
-                Building a bike from scratch or upgrading components. Contact us
-                to discuss what you have in mind.
-              </p>
+              <div>
+                <h3>Custom Builds &amp; Parts</h3>
+                <p>
+                  Building a bike from scratch, upgrading components, or looking
+                  for lights, helmets, locks, and pumps.
+                </p>
+              </div>
               <p class="service-price">Get a Quote</p>
             </article>
           </div>
         </section>
 
-        <section id="location" class="section-block">
-          <h2>Find the Shop &amp; Drop-Offs</h2>
-          <div class="location-split">
-            <address class="contact-details">
-              <p>
-                <strong>Address:</strong> Shop 4, Adum Commercial Area, Kumasi
-              </p>
-              <p>
-                <strong>Hours:</strong> Mon to Sat, 8:00 AM – 5:30 PM (Sunday
-                Closed)
-              </p>
-              <p>
-                <strong>Phone:</strong>
-                <a href="tel:0322000000">0322 000 000</a>
-              </p>
-              <p>
-                <strong>WhatsApp:</strong>
-                <a href="https://wa.me/233244000001">0244 000 001</a>
-              </p>
-              <p>
-                <strong>Email:</strong>
-                <a href="mailto:wheelhouse@email.com">wheelhouse@email.com</a>
-              </p>
-            </address>
-
-            <div class="dropoff-box">
-              <h3>Drop Off Your Bike</h3>
-              <p>
-                You can drop your bike off any time during opening hours. We
-                will inspect it and call or message you with a quote before
-                starting any work.
-              </p>
-              <p class="storage-fee">
-                For major repairs that need the bike overnight, we charge a
-                small storage fee of <strong>GH&#8373; 10 per day</strong>.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="booking" class="section-block">
-          <h2>Book a Service or Ask About Parts</h2>
+        <section id="about" class="section-block">
+          <h2>Why Kumasi Riders Trust Wheelhouse</h2>
           <p class="section-intro">
-            Tell us what your bike needs or check if we stock a specific part.
-            We will get back to you to confirm a drop-off time.
+            When your bike breaks down, you want a workshop that knows what it
+            is doing and treats your bike properly.
           </p>
 
-          <div class="booking-section">
-            <form class="booking-form" action="#booking" method="post">
-              <div class="field-group">
-                <label for="name">Your Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Enter your name"
-                  class="form-field"
-                  required
-                />
+          <div class="about-proof-split">
+            <div class="workshop-story-card">
+              <div class="mechanic-profile">
+                <svg
+                  class="mechanic-avatar"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <circle cx="24" cy="16" r="8" fill="#f5c542" />
+                  <path
+                    d="M10 40C10 32.268 16.268 26 24 26C31.732 26 38 32.268 38 40"
+                    stroke="#ffffff"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <div>
+                  <h3>Led Personally by Kwame Since 2019</h3>
+                  <p>
+                    Kwame opened Wheelhouse in 2019 after spending years fixing
+                    bikes for friends and neighbors out of his yard. Today our
+                    Adum workshop handles kids' bikes, daily commuters, and
+                    high-end road and mountain bikes.
+                  </p>
+                  <p>
+                    We also stock helmets, lights, heavy-duty locks, pumps, and
+                    spare parts, and can source specialized parts within a few
+                    days.
+                  </p>
+                </div>
               </div>
+            </div>
 
-              <div class="field-group">
-                <label for="phone">Phone or WhatsApp Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="e.g. 0244 000 000"
-                  class="form-field"
-                  required
-                />
-              </div>
+            <div class="reviews-stack">
+              <article class="review-card">
+                <p class="review-quote">
+                  "Snapped my chain near Kejetia at 9 AM. Walked into Wheelhouse
+                  and Kwame had me riding again in 25 minutes for the exact
+                  price he quoted."
+                </p>
+                <p class="review-author">Yaw B. • Commuter Rider, Adum</p>
+              </article>
+            </div>
+          </div>
 
-              <div class="field-group">
-                <label for="issue">What does your bike need?</label>
-                <textarea
-                  id="issue"
-                  name="issue"
-                  rows="3"
-                  placeholder="Describe the repair needed or part you are looking for"
-                  class="form-field"
-                  required
-                ></textarea>
-              </div>
+          <div class="reviews-grid" style="margin-top: 1rem">
+            <article class="review-card">
+              <p class="review-quote">
+                "My mountain bike sat in storage for three years with seized
+                brakes. After a full rebuild here, it shifts like brand new."
+              </p>
+              <p class="review-author">Ama O. • KNUST Area</p>
+            </article>
 
-              <button type="submit" class="btn btn-primary form-submit">
-                Submit Request
-              </button>
-            </form>
-            <div id="booking-list" aria-live="polite"></div>
+            <article class="review-card">
+              <p class="review-quote">
+                "Honest workshop. Kwame called me with the exact pad and cable
+                cost before starting work, no surprise charges at pickup."
+              </p>
+              <p class="review-author">Kofi M. • Bantama</p>
+            </article>
+
+            <article class="review-card">
+              <p class="review-quote">
+                "Sent a WhatsApp photo of my punctured rear tyre and they
+                confirmed the tube size was in stock right away."
+              </p>
+              <p class="review-author">Esi D. • Ahodwo</p>
+            </article>
           </div>
         </section>
 
         <section id="faq" class="section-block">
           <h2>Common Questions</h2>
           <p class="section-intro">
-            Answers to the questions we get asked most often.
+            Quick answers before you bring your bike in.
           </p>
 
           <div class="faq-list">
@@ -284,20 +413,140 @@
           </div>
         </section>
 
-        <section id="about" class="section-block">
-          <h2>About Wheelhouse</h2>
-          <p>
-            Kwame opened Wheelhouse in 2019 after spending years fixing bikes
-            for friends and neighbors out of his yard. The workshop now handles
-            everything from kids' bikes to high-end road and mountain bikes. All
-            repairs are done by Kwame personally or under his direct
-            supervision.
+        <section id="location" class="section-block">
+          <h2>Find the Shop &amp; Drop-Offs</h2>
+          <div class="location-split">
+            <address class="contact-details">
+              <h3>Adum Workshop Address</h3>
+              <p>
+                <strong>Address:</strong> Shop 4, Adum Commercial Area, Kumasi
+              </p>
+              <p>
+                <strong>Hours:</strong> Mon to Sat, 8:00 AM - 5:30 PM (Sunday
+                Closed)
+              </p>
+              <p>
+                <strong>Phone:</strong>
+                <a href="tel:0322000000">0322 000 000</a>
+              </p>
+              <p>
+                <strong>WhatsApp:</strong>
+                <a href="https://wa.me/233244000001">0244 000 001</a>
+              </p>
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:wheelhouse@email.com">wheelhouse@email.com</a>
+              </p>
+            </address>
+
+            <div class="dropoff-box">
+              <h3>Walk-In Drop-Off Policy</h3>
+              <p>
+                You can drop your bike off any time during opening hours. We
+                will inspect it and call or message you with a quote before
+                starting any work.
+              </p>
+              <p class="storage-fee">
+                For major repairs that need the bike overnight, we charge a
+                small storage fee of <strong>GH&#8373; 10 per day</strong>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="booking" class="section-block">
+          <h2>Book a Repair or Ask a Question</h2>
+          <p class="section-intro">
+            Ready to arrange a drop-off, or just want to check if we stock a
+            specific tyre, tube, or spare part? Choose an option below and we
+            will reply promptly.
           </p>
-          <p>
-            We also stock a small selection of accessories: lights, helmets,
-            locks, pumps and basic spare parts. If we do not have what you need
-            we can usually source it within a few days.
-          </p>
+
+          <div class="booking-section">
+            <form class="booking-form" action="#booking" method="post">
+              <fieldset class="inquiry-fieldset">
+                <legend>How can we help you today?</legend>
+                <div class="radio-group">
+                  <label class="radio-label" for="type-repair">
+                    <input
+                      type="radio"
+                      id="type-repair"
+                      name="inquiry_type"
+                      value="Book a Repair"
+                      checked
+                    />
+                    Book a Repair Drop-Off
+                  </label>
+                  <label class="radio-label" for="type-question">
+                    <input
+                      type="radio"
+                      id="type-question"
+                      name="inquiry_type"
+                      value="Ask a Question / Check Part"
+                    />
+                    Ask a Question or Check Part Stock
+                  </label>
+                </div>
+              </fieldset>
+
+              <div class="field-group">
+                <label for="name">Your Name (required)</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  autocomplete="name"
+                  placeholder="e.g. Kofi Mensah"
+                  class="form-field"
+                  required
+                />
+              </div>
+
+              <div class="field-group">
+                <label for="phone">Phone or WhatsApp Number (required)</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  autocomplete="tel"
+                  placeholder="e.g. 0244 000 000"
+                  class="form-field"
+                  required
+                />
+              </div>
+
+              <div class="field-group">
+                <label for="email">Email Address (optional)</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="e.g. kofi@example.com"
+                  class="form-field"
+                />
+              </div>
+
+              <div class="field-group">
+                <label for="issue" id="issue-label">
+                  Repair Details or Question (required)
+                </label>
+                <textarea
+                  id="issue"
+                  name="issue"
+                  rows="3"
+                  placeholder="Describe what your bike needs, or ask about a specific part or price"
+                  class="form-field"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary form-submit">
+                Send Request or Question
+              </button>
+            </form>
+            <div id="booking-list" aria-live="polite"></div>
+          </div>
         </section>
       </div>
     </main>
@@ -325,7 +574,7 @@
           statusBanner.classList.add("status-open");
         } else {
           statusBanner.textContent =
-            "CURRENTLY CLOSED • OPENS MON–SAT AT 8:00 AM";
+            "CURRENTLY CLOSED • OPENS MON-SAT AT 8:00 AM";
           statusBanner.classList.add("status-closed");
         }
       }
