@@ -149,16 +149,6 @@ h3 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* Unstick header at 400% zoom / short viewports so it never obscures focus or content (WCAG 1.4.10 & 2.4.11) */
-@media (max-height: 520px), (max-width: 360px) {
-  .site-header {
-    position: static;
-  }
-  html {
-    scroll-padding-top: 1rem;
-  }
-}
-
 .header-bar {
   display: flex;
   justify-content: space-between;
@@ -183,12 +173,11 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 6px;
   background-color: var(--orange-700);
   color: var(--bg-white);
-  font-size: 1.1rem;
   flex-shrink: 0;
 }
 
@@ -467,7 +456,7 @@ h3 {
 }
 
 .section-head {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
   max-width: 65ch;
 }
 
@@ -476,14 +465,29 @@ h3 {
   color: var(--text-muted);
 }
 
-/* Unified 4px Top-Border Card System Everywhere */
-.cards-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
+/* Scannable Bike Types Strip (Consistent Top Accent Border) */
+.bike-types-bar {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-4) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
 }
 
-.two-col-grid {
+.bike-types-bar li {
+  background-color: var(--bg-muted);
+  border: 1px solid var(--border-subtle);
+  border-top: 3px solid var(--orange-700);
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Unified 4px Top-Border Card System Everywhere */
+.cards-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-3);
@@ -513,7 +517,32 @@ h3 {
   font-weight: 700;
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.65rem;
+}
+
+/* Technical Line Icons inside Service Cards */
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.55rem;
+}
+
+.card-title-row h3 {
+  margin: 0;
+}
+
+.service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: var(--orange-tint);
+  color: var(--orange-700);
+  border: 1px solid #fdba74;
+  flex-shrink: 0;
 }
 
 .card p {
@@ -592,34 +621,101 @@ h3 {
   margin: 0.75rem 0 0 0;
 }
 
-/* Location & Contact */
-.contact-details {
-  font-style: normal;
+/* Distinct Location Card vs. Walk-In Drop-Off Rules Card */
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  align-items: stretch;
 }
 
-.detail-list {
+.panel-kicker {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  margin-bottom: 0.6rem;
+  background-color: rgba(255, 255, 255, 0.14);
+  color: #fde68a;
+}
+
+.location-card {
+  font-style: normal;
+  background-color: var(--asphalt-900);
+  color: var(--bg-white);
+  border-color: var(--asphalt-950);
+  border-top: 4px solid var(--orange-700);
+}
+
+.location-card h3 {
+  color: var(--bg-white);
+}
+
+.location-card .detail-list {
   list-style: none;
   padding: 0;
-  margin: 0.5rem 0 0 0;
+  margin: 0.75rem 0 var(--space-3) 0;
 }
 
-.detail-list li {
-  margin-bottom: 0.65rem;
+.location-card .detail-list li {
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f3f4f6;
+  margin: 0;
+}
+
+.location-card .detail-list li:last-child {
+  border-bottom: none;
+}
+
+.location-card .detail-list strong {
+  color: var(--bg-white);
+}
+
+.location-card .detail-list a {
+  color: #fdba74;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.location-card .detail-list a:focus-visible {
+  outline-color: var(--focus-gold);
+}
+
+.location-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.rules-card {
+  background-color: var(--orange-tint);
+  border: 1px solid #fdba74;
+  border-top: 4px solid var(--asphalt-900);
+}
+
+.rules-kicker {
+  background-color: var(--bg-white);
+  color: var(--orange-800);
+  border: 1px solid #fb923c;
+}
+
+.rules-steps {
+  margin: 0.75rem 0 0 0;
+  padding-left: 1.35rem;
   color: var(--text-primary);
 }
 
-.detail-list a {
-  color: var(--orange-700);
-  font-weight: 700;
+.rules-steps li {
+  margin-bottom: 0.85rem;
+  padding-left: 0.25rem;
 }
 
-.storage-note {
-  margin: 0 !important;
-  padding: 0.75rem;
-  background-color: var(--orange-tint);
-  border: 1px solid #fdba74;
-  border-radius: 6px;
-  color: var(--text-primary) !important;
+.rules-steps li:last-child {
+  margin-bottom: 0;
 }
 
 /* Dual-Purpose Accessible Form */
@@ -784,6 +880,14 @@ h3 {
   html {
     scroll-padding-top: 6.5rem;
   }
+  section[id],
+  a,
+  button,
+  input,
+  textarea,
+  summary {
+    scroll-margin-top: 6.5rem;
+  }
   h1 {
     font-size: 2.75rem;
   }
@@ -801,5 +905,23 @@ h3 {
     flex-direction: row;
     justify-content: space-between;
     text-align: left;
+  }
+}
+
+/* Placed last so 400% zoom / short viewports ALWAYS unstick the header (WCAG 1.4.10 & 2.4.11) */
+@media (max-height: 520px), (max-width: 360px) {
+  .site-header {
+    position: static;
+  }
+  html {
+    scroll-padding-top: 1rem;
+  }
+  section[id],
+  a,
+  button,
+  input,
+  textarea,
+  summary {
+    scroll-margin-top: 1rem;
   }
 }
