@@ -41,29 +41,44 @@ Customers looking up Wheelhouse are usually standing on the roadside in Kumasi o
 
 ---
 
-## 3. Design System, Accessibility & Rebuild Audit (Evaluate)
+## 3. Design System & Self-Audit of the Finished Page
 
-### Carbon Asphalt & Burnt Cycling Orange Palette (WCAG 2.2 AA/AAA Verified)
+### Workshop Design System (Colour Palette, Type Scale & Spacing)
 
-Instead of keeping the legacy navy/red/rainbow colors, the rebuild introduces a mechanical bike-workshop palette built for outdoor sunlight contrast:
+To match a hands-on bicycle workshop without feeling trendy for its own sake, the CSS custom properties in `css/styles.css` define a grounded three-part system:
 
-- **Deep Tire Asphalt (`#121316` & `#1c1e24`):** Grounds the sticky header, hero, footer, and location directory card (`#ffffff` text on `#121316` = **18.5:1**, WCAG AAA).
-- **Burnt Cycling Orange (`#c2410c` / hover `#9a3412`):** Single action and priority accent used consistently for primary buttons, prices, and priority `4px` top card borders (`#ffffff` on `#c2410c` = **5.18:1**, passing WCAG AA; `#9a3412` = **7.15:1**, WCAG AAA).
-- **Sunlight-Safe Surfaces & Copy:** Primary copy uses `#111827` on `#ffffff` (**17.7:1**, WCAG AAA) and secondary copy uses `#374151` (**10.3:1** on white, **9.4:1** on `#f4f5f7` muted slate). Form control borders use `2px solid #4b5563` (**7.56:1** non-text contrast, exceeding the `3:1` WCAG `1.4.11` threshold).
-- **High-Visibility Focus Indicators (`WCAG 2.4.7`, `1.4.11`, `2.4.11`):** Interactive elements on light surfaces show a `3px solid #c2410c` focus ring, while dark surfaces (`header`, `hero`, `location-card`, `footer`) show a `3px solid #facc15` Signal Gold ring (**12.85:1** on `#121316`). `scroll-padding-top`, `scroll-margin-top`, a `focusin` scroll guard, and a `@media (max-height: 520px), (max-width: 360px)` rule ensure the header never obscures focused elements or blocks half the viewport at `400%` zoom.
+- **Colour Palette (Carbon Asphalt & Burnt Cycling Orange):**
+  - **Workshop Surfaces:** Deep Tire Asphalt (`#121316` header/footer and `#1c1e24` hero/location card) paired with crisp white (`#ffffff`) and muted slate (`#f4f5f7`) alternating sections so visitors can scan distinct blocks outdoors.
+  - **Action & Priority Accent:** Burnt Cycling Orange (`#c2410c`, hover `#9a3412`, warm tint `#fff7ed`) reserved strictly for primary CTAs, prices, and priority `4px` top borders, alongside accessible WhatsApp green (`#15803d`) and Signal Gold focus rings (`#facc15` on dark surfaces).
+  - **Sunlight-Safe Text & Control Borders:** `#111827` primary text (`17.7:1` on white), `#374151` secondary text (`10.3:1` on white, `9.4:1` on `#f4f5f7`), and `2px solid #4b5563` form field borders (`7.56:1`).
+- **Deliberate Type Scale (`rem`-based, rooted at `html { font-size: 100%; }`):**
+  - **Font Pairing:** `Balsamiq Sans` (`700`) gives headings, prices, and scoreboard figures a warm, approachable workshop character, while `Inter` (`400`–`700`) keeps body copy, labels, and buttons effortless to read on small screens.
+  - **Scale:** `h1` `2.15rem` on mobile (`2.75rem` at `900px+`), scoreboard stats `1.95rem`, `h2` `1.65rem`, `h3` `1.2rem`, prices `1.15rem`, hero lead `1.05rem`, body and inputs `1rem`, buttons and nav links `0.875rem–0.95rem`, and status/tag kickers `0.78rem–0.85rem`.
+- **8px Modular Spacing System:** Built on six CSS tokens (`--space-1: 0.5rem / 8px`, `--space-2: 1rem / 16px`, `--space-3: 1.5rem / 24px`, `--space-4: 2rem / 32px`, `--space-5: 3rem / 48px`, `--space-6: 4rem / 64px`) with consistent `8px` card radii (`--radius`) and a `1080px` max-width container.
 
-### Unified Card System, Responsive Grid & Progressive Enhancement
+### Written Audit of the Finished Page
 
-- **Consistent Top-Border Rule:** Every card across the site (`.card`, `.proof-scoreboard`, `.status-pill`, `.location-card`, `.rules-card`, `.booking-form`, `.faq-item`, `.form-feedback`) uses a top accent border (`3px–5px`), eliminating mixed left-vs-top border styles.
-- **Fluid Reflow (`320px` to Desktop):** CSS Grid scales cleanly from `1fr` on mobile (`320px`/`375px`) to 2 columns at `640px` and 3 columns at `900px` with zero horizontal scrolling (`overflow-x: clip`) and relative `rem` sizing (`html { font-size: 100%; }`) so browser font-size preferences scale all text proportionally.
-- **Accessible Mobile Navigation, Native FAQs & Dual-Mode Form:** Progressive-enhancement mobile menu (`<button aria-expanded>` + `Escape` key dismissal + auto-close on `focusout`), native `<details>`/`<summary>` accordions, and a single accessible `<form>` with `<fieldset>`/`<legend>` mode selection, explicit `(required)` labels, `autocomplete="name"` and `autocomplete="tel"`, `aria-invalid` field recovery, and `aria-live="polite"` confirmation.
+1. **Semantic HTML:** Replaced the legacy `<div>` and `<br>` layout with landmark and content elements that convey real structure: `<header>`, `<nav aria-label="Main Navigation">`, `<main id="main-content">`, thematic `<section>` blocks with ordered `<h1>`–`<h3>` headings (zero skipped levels), `<figure>` for Kwame's workshop photo, `<article>` for service and review cards, native `<details>`/`<summary>` for FAQs, `<address>` for shop contact details, `<aside>` with `<ol>` for walk-in rules, `<fieldset>`/`<legend>` for the dual-purpose `<form>`, and `<footer>`.
+2. **Baseline & WCAG 2.2 AA Accessibility:** Every text and button combination exceeds `4.5:1` (`5.02:1` to `18.5:1`), form borders (`7.56:1`) and custom `:focus-visible` outlines (`5.18:1` orange on light, `12.85:1` gold on dark) exceed `3:1`, tap targets meet `44px` minimum height for one-handed phone use, inputs include explicit `<label>` elements with `(required)` markers and `autocomplete` attributes, and `400%` zoom / `320px` width reflows into a single column with zero horizontal scrolling and an unstuck header.
+3. **Visual Consistency:** Eliminated the legacy site's six competing inline rainbow borders and mixed font sizes. Every card, banner, status pill, FAQ item, and feedback alert across the site shares the same top-accent border treatment (`#c2410c` for priority actions/services, `#1c1e24` for standard cards), the same `24px` (`--space-3`) internal card padding, and the same two-colour workshop palette, while the dark location card and warm amber policy card stay visually distinct at first glance.
+
+### What I Prioritised and Why (Given Kwame's Constraints)
+
+Customers searching for Wheelhouse have a broken bike today and are comparing two or three Kumasi workshops side by side on their phones—not browsing for entertainment. Given Kwame's explicit preference for **trust over trendiness**, I prioritised:
+
+1. **Five-second mobile clarity and one-tap contact** (putting `Call Shop`, `WhatsApp`, live Kumasi opening status, Adum location, and a real workshop photo above the fold) ahead of decorative animations, carousels, or multi-page navigation that slow down mobile data connections.
+2. **Upfront price transparency and local proof before the form** (`From GH₵ 60` rates, `Since 2019` history, `7-Day Tune` guarantee, and Kumasi rider reviews placed above `#booking`) because strangers only call or walk into a workshop once they trust its competence and pricing.
+3. **Resilient progressive enhancement** (native `<details>` FAQs, `tel:`/`wa.me` links, and a mobile menu and status banner that still display static hours and links if JavaScript fails on a weak connection).
 
 ---
 
-## 4. Visible Business Improvements (Create)
+## 4. Additional Business Improvement Beyond the Brief (Deliverable 5)
 
-1. **One-Tap WhatsApp Photo Estimate Banner & Direct Google Maps Navigation:** Stranded cyclists often do not know the technical name of a bent derailleur or exact tube valve size. A dedicated callout banner right below the hero pre-fills a WhatsApp message so riders can send Kwame a quick photo to verify part stock and price before pushing their bike to Adum, paired with a direct Google Maps link and Adum Post Office landmark cue in `#location`.
-2. **Timezone-Safe (`Africa/Accra`) Live Open/Closed Status With Non-Color Symbols:** Checks Ghana Standard Time (`GMT`) against data attributes (`data-open="8"`, `data-close="17.5"`, `data-days="1,2,3,4,5,6"`) and displays both text and non-color symbols (`● OPEN NOW UNTIL 5:30 PM` vs. `✕ CLOSED NOW`), falling back cleanly to static hours if JavaScript is unavailable.
+### One-Tap "Send Photo on WhatsApp" Pre-Check & Dual-Mode Inquiry Flow
+
+- **What I implemented:** Directly below the hero scoreboard, I built a dedicated roadside triage banner (`Stranded or unsure which part your bike needs?`) with a pre-filled WhatsApp link (`Send Photo on WhatsApp`), paired with a live Ghana Standard Time (`Africa/Accra`) open/closed status pill in the hero and a two-mode radio switch (`Book a Repair Drop-Off` vs. `Ask a Question / Check Parts`) inside the consolidated form.
+- **Value for customers:** Everyday commuters with a flat tyre, bent gear hanger, or rusted chain often do not know technical part names or exact tube sidewall sizes. Instead of guessing, typing a long form message one-handed on the roadside, or pushing a heavy bike across Adum only to learn a rare part is out of stock, they can tap once, snap a photo in WhatsApp, and get an immediate answer.
+- **Value for Kwame's business:** Pre-filled photo messages give Kwame the exact tyre size or drivetrain damage before the rider arrives—saving bench inspection time, preventing wasted walk-ins, and converting hesitant mobile searchers who would otherwise bounce to the competitor down the road into confirmed jobs.
 
 ---
 
