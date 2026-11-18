@@ -1,8 +1,9 @@
-// Wheelhouse Bike Repair — Accessible Mobile Nav, GMT Status & Dual-Purpose Form
+// Wheelhouse Bike Repair - Accessible Mobile Nav, GMT Status & Dual-Purpose Form
 
 (function () {
-  // 1. Accessible Mobile Menu Toggle (Progressive Enhancement + Escape Key Support)
+  // 1. Accessible Mobile Menu Toggle (Progressive Enhancement + Esc + Tab-Out Close)
   document.documentElement.classList.add("js-enabled");
+  const siteHeader = document.querySelector(".site-header");
   const menuBtn = document.getElementById("menu-toggle");
   const primaryMenu = document.getElementById("primary-menu");
 
@@ -34,15 +35,28 @@
       });
     });
 
-    // Dismiss open mobile menu with Escape key and return focus to toggle button
+    // Close open mobile menu with Escape key and return focus to toggle button
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && primaryMenu.classList.contains("is-open")) {
         closeMenu(true);
       }
     });
+
+    // Auto-close mobile menu when keyboard focus tabs out of the header (WCAG 2.4.11)
+    if (siteHeader) {
+      siteHeader.addEventListener("focusout", function (e) {
+        if (
+          primaryMenu.classList.contains("is-open") &&
+          e.relatedTarget &&
+          !siteHeader.contains(e.relatedTarget)
+        ) {
+          closeMenu(false);
+        }
+      });
+    }
   }
 
-  // 2. Live Kumasi (Africa/Accra, GMT) Workshop Status
+  // 2. Live Kumasi (Africa/Accra, GMT) Workshop Status with Non-Color Cues (WCAG 1.4.1)
   const statusEl = document.getElementById("shop-status");
   if (statusEl) {
     const openHour = parseFloat(statusEl.dataset.open || "8");
@@ -72,10 +86,10 @@
 
     statusEl.classList.remove("status-open", "status-closed");
     if (isOpen) {
-      statusEl.textContent = "OPEN NOW UNTIL 5:30 PM • WALK-INS WELCOME";
+      statusEl.textContent = "● OPEN NOW UNTIL 5:30 PM • WALK-INS WELCOME";
       statusEl.classList.add("status-open");
     } else {
-      statusEl.textContent = "CLOSED NOW • OPENS MON–SAT AT 8:00 AM";
+      statusEl.textContent = "✕ CLOSED NOW • OPENS MON-SAT AT 8:00 AM";
       statusEl.classList.add("status-closed");
     }
   }
@@ -104,39 +118,69 @@
 
   radios.forEach((r) => r.addEventListener("change", syncFormMode));
 
-  // 4. Accessible Form Validation & Confirmation
+  // 4. Accessible Form Validation (aria-invalid + Focus Recovery) & Confirmation
   const form = document.querySelector(".booking-form");
   const output = document.getElementById("booking-list");
+  const nameInput = document.getElementById("name");
+  const phoneInput = document.getElementById("phone");
 
-  if (form && output) {
+  if (form && output && nameInput && phoneInput && issueInput) {
+    const requiredFields = [
+      { el: nameInput, label: "Your Name" },
+      { el: phoneInput, label: "Phone or WhatsApp" },
+      { el: issueInput, label: "Bike details or question" },
+    ];
+
+    requiredFields.forEach(function (item) {
+      item.el.addEventListener("input", function () {
+        if (item.el.value.trim()) {
+          item.el.removeAttribute("aria-invalid");
+        }
+      });
+    });
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      const name = document.getElementById("name").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const details = issueInput.value.trim();
+      const missingLabels = [];
+      let firstInvalid = null;
+
+      requiredFields.forEach(function (item) {
+        if (!item.el.value.trim()) {
+          item.el.setAttribute("aria-invalid", "true");
+          missingLabels.push(item.label);
+          if (!firstInvalid) firstInvalid = item.el;
+        } else {
+          item.el.removeAttribute("aria-invalid");
+        }
+      });
+
+      if (missingLabels.length > 0) {
+        output.innerHTML =
+          '<div class="form-feedback is-error" role="alert">' +
+          "<strong>Please complete required fields:</strong> " +
+          missingLabels.join(", ") +
+          "." +
+          "</div>";
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
       const checked = document.querySelector(
         'input[name="request_type"]:checked',
       );
       const kind = checked ? checked.value : "Request";
 
-      if (!name || !phone || !details) {
-        output.innerHTML =
-          '<div class="form-feedback is-error" role="alert">' +
-          "<strong>Missing details:</strong> Please enter your name, phone or WhatsApp number, and message so Kwame can reply." +
-          "</div>";
-        return;
-      }
-
       const box = document.createElement("div");
       box.className = "form-feedback";
       const title = document.createElement("strong");
-      title.textContent = kind + " received from " + name + ": ";
+      title.textContent =
+        kind + " received from " + nameInput.value.trim() + ": ";
       const msg = document.createElement("span");
       msg.textContent =
         '"' +
-        details +
-        '" — Kwame will call or WhatsApp ' +
-        phone +
+        issueInput.value.trim() +
+        '" - Kwame will call or WhatsApp ' +
+        phoneInput.value.trim() +
         " shortly.";
 
       box.appendChild(title);
