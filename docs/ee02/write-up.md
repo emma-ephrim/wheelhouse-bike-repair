@@ -54,22 +54,24 @@ Calvin's manual keyboard, zoom, Safari/macOS, iPhone one-thumb, and screen-reade
 
 ---
 
-## 2. Further Accessibility & Situational Improvements Beyond the Audit
+## 2. Additional Improvement Beyond the Audit: Quick WhatsApp Photo Check & Two-Option Form
 
-Looking past the audit checklist to the real-world conditions in Adum, Kumasi, a stranded rider faces three compounding situational barriers that automated tools and indoor desktop tests overlook: **harsh midday sunlight glare**, **one-handed phone operation while holding a broken bicycle** (or uncertain technical vocabulary when describing a broken part), and **congested mobile data connections**.
+### Who the Audit Missed
 
-### What I Built to Remove Those Barriers
+Calvin tested keyboard use, zoom, screen readers, and one-handed typing for someone who already knows what repair to ask for. In real life, many everyday riders in Kumasi do not know the names of specific bike parts, struggle with spelling (such as people with dyslexia or riders more comfortable speaking Twi than typing English), or just want to check if a tube size is in stock before walking over. Calvin also noted that he did not test slow mobile data or Kumasi's local timezone. Even with a working form, forcing someone on the roadside to type out a full description of a broken part can make them give up and try another shop.
 
-1. **One-Tap Pre-Filled WhatsApp Photo Triage Banner + Dual-Mode Inquiry Form:** A rider with one free hand or unfamiliar with bicycle part names (such as derailleur hangers or tyre ETRTO markings) struggles to type detailed descriptions into a form. Directly below the hero, a warm high-contrast callout offers a pre-filled WhatsApp link (`Send Photo on WhatsApp`) so the rider can snap a picture of their tyre sidewall or broken chain in seconds. Down in `#booking`, a `<fieldset>`/`<legend>` radio switch (`Book a Repair Drop-Off` vs. `Ask a Question / Check Parts`) dynamically updates `#issue-label` and placeholder examples so general inquiries never feel forced into a repair booking flow.
-2. **Sunlight-Grade AAA Text Contrast & Non-Color GMT Shop Status (`WCAG 1.4.1` & Timezone Accuracy):** Upgraded body copy to `#111827` (**17.7:1**) and muted copy to `#374151` (**10.3:1** on white, **9.4:1** on `#f4f5f7`), paired with a solid dark fill and `2px solid #ffffff` border on the secondary hero CTA so nothing washes out outdoors. Rewrote the `#shop-status` script using `Intl.DateTimeFormat` locked to `Africa/Accra` (`GMT`) so visitors always see accurate Kumasi workshop hours regardless of device clock settings, and prepended non-color symbols (`● OPEN NOW` vs. `✕ CLOSED NOW`) so color-blind users do not rely on green/red top borders alone.
-3. **Low-Bandwidth Image Compression:** Compressed the hero workshop photograph (`images/workshop-hero.jpg`) with explicit `width`/`height` attributes (preventing layout shift) and `fetchpriority="high"` so mobile riders on slow connections see a real, trustworthy Kumasi workshop immediately without multi-megabyte data cost.
+### What I Added and Why It Helps
+
+1. **One-Tap WhatsApp Photo Strip (`index.html`):** Right below the hero banner, I added a clear notice (`Stranded or unsure which part your bike needs?`) with a `Send Photo on WhatsApp` button that opens WhatsApp with a starter message already filled in. Instead of struggling to explain a bent gear part or read tiny numbers on a flat tyre, a rider can just snap a photo and let Kwame confirm the part and price in seconds.
+2. **Repair vs. Question Switch in the Form (`index.html` & `js/script.js`):** Inside the form, I added two radio buttons grouped in a `<fieldset>`: `Book a Repair Drop-Off` and `Ask a Question / Check Parts`. Picking the second option changes the text box label and example hint right away, so someone with a quick question knows the form is for them too.
+3. **Clear Open/Closed Signs, Sunlight Contrast, and Smaller Image Size:** I set the open/closed banner (`#shop-status`) to check Ghana time (`Africa/Accra`) instead of the visitor's phone clock, and added `●` and `✕` symbols (`● OPEN NOW` vs. `✕ CLOSED NOW`) so colour-blind visitors do not have to rely on green and red borders alone. I also darkened the grey text for bright outdoor sunlight and compressed the hero workshop photo so it loads quickly on slow mobile data.
 
 ---
 
 ## 3. Re-Verification Summary
 
-After applying all changes, I re-tested the full single-page journey:
+After making these fixes, I tested the whole page again by hand:
 
-- **Keyboard (`Tab`, `Shift+Tab`, `Enter`, `Space`, `Escape`):** Verified from the `Skip to main content` link through the header, mobile menu (`Escape` and `focusout` dismissal), `<details>` FAQs, and backwards `Shift+Tab` into the Submit button—every focused control stays completely clear of `.site-header` and displays a `>=3:1` focus indicator.
-- **Zoom & Text Resize (`200%` text size, `400%` zoom at `1280px`, and `320px` mobile width):** Header unsticks automatically at `400%` zoom, buttons stay on one line, all text scales cleanly via `rem`, and zero horizontal scrollbar appears anywhere on the page.
-- **Form & Screen Reader Checks:** Verified empty-submit error recovery (`aria-invalid="true"` + focus moved to first missing input + `role="alert"` announcement) and successful repair/question confirmation inside `aria-live="polite"`.
+- **Keyboard (`Tab`, `Shift+Tab`, `Enter`, `Space`, `Escape`):** Tabbed from `Skip to main content` through the header, mobile menu (`Escape` and tabbing out both close it), FAQ items, and backwards with `Shift+Tab` onto the Submit button. Nothing gets hidden behind the sticky header, and every link, button, and input shows a clear focus ring.
+- **Zoom & Text Size (`200%` text size, `400%` zoom, and `320px` phone width):** At `400%` zoom, the top header stops sticking to the screen so it no longer blocks half the view, buttons stay on a single line, all text grows evenly, and there is no sideways scrolling.
+- **Form & Screen Reader Checks:** Leaving fields blank marks the empty boxes as invalid, announces what is missing, and moves the cursor straight to the first empty box. Sending a filled form shows a clear confirmation message right below the button without reloading the page.

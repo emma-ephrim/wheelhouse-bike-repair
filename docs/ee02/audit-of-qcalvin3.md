@@ -30,7 +30,7 @@ The rebuilt Wheelhouse page is easy to read, well organised, and passes automate
 
 - Evidence: Screenshot below shows `"Brakes not working well"` hidden behind the sticky top bar while focused; adding `scroll-padding-top` on the page would leave space for the header.
 
-  ![Focused ](evidence/01-sticky-header-hides-focus.png)
+  ![Focused Brakes not working well button hidden behind the sticky top header bar](evidence/01-sticky-header-hides-focus.png)
 
 - Principle and criterion: Operable; [2.4.11 Focus Not Obscured (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html), AA
 - Who it affects and how: Sighted keyboard users and people navigating with one hand (like Kwame's customer) cannot see which repair option they are about to press when moving back up the page, and visitors using the menu or skip link land with the section title hidden.
@@ -87,7 +87,7 @@ The rebuilt Wheelhouse page is easy to read, well organised, and passes automate
   ![Menu open at 320x200 viewport with Find us cut off below the bottom edge of the screen](evidence/04-menu-cutoff-400-zoom.png)
 
 - Principle and criterion: Perceivable; [1.4.10 Reflow](https://www.w3.org/WAI/WCAG22/quickref/), AA
-- Who it affects and how: People with low vision (like Ama's customer) using `400%` browser zoom with a mouse on a laptop cannot click `"Find us"` in the menu and have to close the menu and scroll all the way down the page instead.
+- Who it affects and how: People with low vision (such as older Kumasi riders) using `400%` browser zoom with a mouse on a laptop cannot click `"Find us"` in the menu and have to close the menu and scroll all the way down the page instead.
 - Found by: Manual `400%` zoom / `320 x 200` reflow test in Firefox Responsive Design Mode
 - Why it ranks here: Ranked #4 because keyboard users can still reach `"Find us"` with `Tab`, and visitors can still scroll down the page itself to find the shop's address.
 
