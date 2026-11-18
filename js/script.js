@@ -191,4 +191,25 @@
       syncFormMode();
     });
   }
+
+  // 5. Keep focused controls clear of sticky header during Shift+Tab (WCAG 2.4.11)
+  document.addEventListener("focusin", function (e) {
+    if (!siteHeader || !e.target || e.target.classList.contains("skip-link")) {
+      return;
+    }
+    if (siteHeader.contains(e.target)) return;
+
+    const headerStyle = window.getComputedStyle(siteHeader);
+    if (headerStyle.position !== "sticky") return;
+
+    const headerBottom = siteHeader.getBoundingClientRect().bottom;
+    const targetTop = e.target.getBoundingClientRect().top;
+
+    if (targetTop < headerBottom + 12) {
+      window.scrollBy({
+        top: targetTop - headerBottom - 16,
+        behavior: "instant",
+      });
+    }
+  });
 })();
