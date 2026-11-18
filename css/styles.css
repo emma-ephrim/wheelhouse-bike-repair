@@ -317,11 +317,17 @@ h3 {
   background-color: #272a33;
 }
 
-/* Hero Section */
+/* Hero Section (Adjusted bottom padding for overlapping scoreboard) */
 .hero {
-  background-color: var(--asphalt-900);
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(194, 65, 12, 0.18),
+      transparent 45%
+    ),
+    var(--asphalt-900);
   color: var(--bg-white);
-  padding: var(--space-4) 0 var(--space-5) 0;
+  padding: var(--space-4) 0 var(--space-4) 0;
 }
 
 .hero-layout {
@@ -383,42 +389,64 @@ h3 {
   object-fit: cover;
 }
 
-/* Immediate Competitor Comparison Proof Strip */
-.proof-bar {
+/* Workshop Spec-Plate Scoreboard (Bridges Hero & Next Section) */
+.proof-scoreboard {
   list-style: none;
-  margin: var(--space-4) 0 0 0;
+  margin: var(--space-4) 0 calc(var(--space-5) * -0.65) 0;
   padding: 0;
+  position: relative;
+  z-index: 5;
+  background-color: var(--bg-white);
+  color: var(--text-primary);
+  border: 2px solid var(--asphalt-950);
+  border-top: 5px solid var(--orange-700);
+  border-radius: 12px;
+  box-shadow: 0 18px 36px rgba(18, 19, 22, 0.28);
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-2);
+  overflow: hidden;
 }
 
-.proof-bar li {
-  background-color: var(--asphalt-950);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-top: 4px solid var(--orange-700);
-  border-radius: var(--radius);
-  padding: 1rem 1.15rem;
+.score-item {
+  padding: 1.35rem 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  position: relative;
 }
 
-.proof-bar strong {
-  display: block;
+.score-item:last-child {
+  border-bottom: none;
+}
+
+.score-eyebrow {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.score-stat {
   font-family: var(--font-heading);
-  font-size: 1.05rem;
-  color: var(--bg-white);
-  margin-bottom: 0.2rem;
+  font-size: 1.95rem;
+  line-height: 1.1;
+  color: var(--orange-700);
+  margin: 0.1rem 0 0.2rem 0;
 }
 
-.proof-bar span {
+.score-desc {
   font-size: 0.94rem;
-  color: #e5e7eb;
+  line-height: 1.45;
+  color: var(--text-primary);
 }
 
 /* Visibly Obvious Improvement: WhatsApp Photo Estimate Strip */
 .photo-estimate-banner {
   background-color: var(--orange-tint);
   border-bottom: 2px solid #fdba74;
-  padding: var(--space-3) 0;
+  padding: calc(var(--space-5) * 0.95) 0 var(--space-3) 0;
 }
 
 .estimate-inner {
@@ -873,7 +901,17 @@ h3 {
   .hero-layout {
     grid-template-columns: 1.2fr 1fr;
   }
-  .proof-bar,
+  .proof-scoreboard {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .score-item {
+    border-bottom: none;
+    border-right: 1px solid var(--border-subtle);
+    padding: 1.5rem 1.75rem;
+  }
+  .score-item:last-child {
+    border-right: none;
+  }
   .cards-grid {
     grid-template-columns: repeat(3, 1fr);
   }
