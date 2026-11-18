@@ -1,4 +1,4 @@
-# Accessibility audit: Wheelhouse Bike Repair, Kumasi site by qcalvin3
+# Accessibility audit: Wheelhouse Bike Repair, Kumasi site by Calvin Quashie
 
 - Site audited: [https://qcalvin3.github.io/wheelhouse-rebuild](https://qcalvin3.github.io/wheelhouse-rebuild)
 - Date and time tested: 17 November 2026, 7:50pm
