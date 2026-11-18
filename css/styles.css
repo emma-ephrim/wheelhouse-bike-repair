@@ -579,6 +579,57 @@ h3 {
   color: var(--orange-700) !important;
 }
 
+/* Trust Split Layout (Kwame's Story + Vintage Patent Illustration) */
+.trust-story-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  align-items: center;
+}
+
+.panel-kicker.trust-kicker {
+  background-color: var(--asphalt-900);
+  color: var(--bg-white);
+  border: 1px solid var(--asphalt-950);
+  border-top: 3px solid var(--orange-700);
+  font-size: 0.82rem;
+  padding: 0.25rem 0.65rem;
+}
+
+.trust-story-text h2 {
+  font-size: 1.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.trust-story-text p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 var(--space-2) 0;
+}
+
+.trust-story-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Aged Blueprint Framing */
+.trust-illustration {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  border-top: 5px solid var(--orange-700);
+  box-shadow: 0 10px 24px rgba(18, 19, 22, 0.08);
+  background-color: #f7ede2; /* Warm parchment backing */
+}
+
+.trust-illustration img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
 /* FAQ Native Accordions */
 .faq-list {
   display: grid;
@@ -917,6 +968,10 @@ h3 {
   }
   .two-col-grid {
     grid-template-columns: 1fr 1fr;
+  }
+  .trust-story-grid {
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-5);
   }
   .footer-inner {
     flex-direction: row;
