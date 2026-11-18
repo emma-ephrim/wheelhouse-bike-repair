@@ -1,23 +1,48 @@
-// Wheelhouse Bike Repair — script.js
-// This file is intentionally empty.
-// You will add the interactive behaviour for this page here in Applied JavaScript.
-
-// === SECTION 1: Common questions accordion ===
-// Each .faq-trigger should expand and collapse its paired .faq-body when clicked.
-
-// === SECTION 2: Service request tracker ===
-// When the booking form is submitted, add the customer's name and request
-// to the list below the form. Prevent the page from refreshing on submit.
-
-// === SECTION 3: Contact form ===
-// Validate the contact form before submission.
-// Show a success message when all fields are correctly filled in.
-// If a required field is missing, tell the user what needs to be fixed.
-
-// Wheelhouse Bike Repair — Workshop Status & Dual-Purpose Form Handler
+// Wheelhouse Bike Repair — Accessible Mobile Nav, GMT Status & Dual-Purpose Form
 
 (function () {
-  // 1. Live Kumasi (Africa/Accra, GMT) Workshop Status
+  // 1. Accessible Mobile Menu Toggle (Progressive Enhancement + Escape Key Support)
+  document.documentElement.classList.add("js-enabled");
+  const menuBtn = document.getElementById("menu-toggle");
+  const primaryMenu = document.getElementById("primary-menu");
+
+  if (menuBtn && primaryMenu) {
+    const iconSpan = menuBtn.querySelector(".menu-icon");
+
+    function closeMenu(returnFocus) {
+      menuBtn.setAttribute("aria-expanded", "false");
+      primaryMenu.classList.remove("is-open");
+      if (iconSpan) iconSpan.textContent = "☰";
+      if (returnFocus) menuBtn.focus();
+    }
+
+    menuBtn.addEventListener("click", function () {
+      const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        closeMenu(false);
+      } else {
+        menuBtn.setAttribute("aria-expanded", "true");
+        primaryMenu.classList.add("is-open");
+        if (iconSpan) iconSpan.textContent = "✕";
+      }
+    });
+
+    // Close mobile menu after selecting a section link
+    primaryMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        closeMenu(false);
+      });
+    });
+
+    // Dismiss open mobile menu with Escape key and return focus to toggle button
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && primaryMenu.classList.contains("is-open")) {
+        closeMenu(true);
+      }
+    });
+  }
+
+  // 2. Live Kumasi (Africa/Accra, GMT) Workshop Status
   const statusEl = document.getElementById("shop-status");
   if (statusEl) {
     const openHour = parseFloat(statusEl.dataset.open || "8");
@@ -55,7 +80,7 @@
     }
   }
 
-  // 2. Dual-Purpose Form Toggle (Repair Booking vs. Quick Question)
+  // 3. Dual-Purpose Form Toggle (Repair Booking vs. Quick Question)
   const radios = document.querySelectorAll('input[name="request_type"]');
   const issueLabel = document.getElementById("issue-label");
   const issueInput = document.getElementById("issue");
@@ -79,7 +104,7 @@
 
   radios.forEach((r) => r.addEventListener("change", syncFormMode));
 
-  // 3. Accessible Form Validation & Confirmation
+  // 4. Accessible Form Validation & Confirmation
   const form = document.querySelector(".booking-form");
   const output = document.getElementById("booking-list");
 
