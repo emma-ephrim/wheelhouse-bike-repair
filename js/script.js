@@ -1,7 +1,7 @@
-// Wheelhouse Bike Repair - Accessible Mobile Nav, GMT Status & Dual-Purpose Form
+// Wheelhouse Bike Repair - Main UI scripts
 
 (function () {
-  // 1. Accessible Mobile Menu Toggle (Progressive Enhancement + Esc + Tab-Out Close)
+  // Mobile menu toggle
   document.documentElement.classList.add("js-enabled");
   const siteHeader = document.querySelector(".site-header");
   const menuBtn = document.getElementById("menu-toggle");
@@ -28,21 +28,21 @@
       }
     });
 
-    // Close mobile menu after selecting a section link
+    // Close menu when a link is clicked
     primaryMenu.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
         closeMenu(false);
       });
     });
 
-    // Close open mobile menu with Escape key and return focus to toggle button
+    // Let Escape close the menu and put focus back on the toggle button
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && primaryMenu.classList.contains("is-open")) {
         closeMenu(true);
       }
     });
 
-    // Auto-close mobile menu when keyboard focus tabs out of the header (WCAG 2.4.11)
+    // Close menu if the user tabs past the header
     if (siteHeader) {
       siteHeader.addEventListener("focusout", function (e) {
         if (
@@ -56,7 +56,7 @@
     }
   }
 
-  // 2. Live Kumasi (Africa/Accra, GMT) Workshop Status with Non-Color Cues (WCAG 1.4.1)
+  // Shop open/closed banner using Ghana time (Africa/Accra)
   const statusEl = document.getElementById("shop-status");
   if (statusEl) {
     const openHour = parseFloat(statusEl.dataset.open || "8");
@@ -94,7 +94,7 @@
     }
   }
 
-  // 3. Dual-Purpose Form Toggle (Repair Booking vs. Quick Question)
+  // Update textarea label and placeholder when switching between booking and question
   const radios = document.querySelectorAll('input[name="request_type"]');
   const issueLabel = document.getElementById("issue-label");
   const issueInput = document.getElementById("issue");
@@ -118,7 +118,7 @@
 
   radios.forEach((r) => r.addEventListener("change", syncFormMode));
 
-  // 4. Accessible Form Validation (aria-invalid + Focus Recovery) & Confirmation
+  // Form validation and confirmation message
   const form = document.querySelector(".booking-form");
   const output = document.getElementById("booking-list");
   const nameInput = document.getElementById("name");
@@ -192,7 +192,7 @@
     });
   }
 
-  // 5. Keep focused controls clear of sticky header during Shift+Tab (WCAG 2.4.11)
+  // Nudge the page if Shift+Tab lands an element behind the sticky header
   document.addEventListener("focusin", function (e) {
     if (!siteHeader || !e.target || e.target.classList.contains("skip-link")) {
       return;
