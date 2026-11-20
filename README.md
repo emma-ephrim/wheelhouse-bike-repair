@@ -41,7 +41,7 @@ Customers looking up Wheelhouse are usually standing on the roadside in Kumasi o
 
 ---
 
-## 3. Design System & Self-Audit of the Finished Page
+## 3. Design System And Self-Audit of the Finished Page
 
 ### Workshop Design System (Colour Palette, Type Scale & Spacing)
 
@@ -64,7 +64,7 @@ To match a hands-on bicycle workshop without feeling trendy for its own sake, th
 
 ### What I Prioritised and Why (Given Kwame's Constraints)
 
-Customers searching for Wheelhouse have a broken bike today and are comparing two or three Kumasi workshops side by side on their phones—not browsing for entertainment. Given Kwame's explicit preference for **trust over trendiness**, I prioritised:
+Customers searching for Wheelhouse have a broken bike today and are comparing two or three Kumasi workshops side by side on their phones, not browsing for entertainment. Given Kwame's explicit preference for **trust over trendiness**, I prioritised:
 
 1. **Five-second mobile clarity and one-tap contact** (putting `Call Shop`, `WhatsApp`, live Kumasi opening status, Adum location, and a real workshop photo above the fold) ahead of decorative animations, carousels, or multi-page navigation that slow down mobile data connections.
 2. **Upfront price transparency and local proof before the form** (`From GH₵ 60` rates, `Since 2019` history, `7-Day Tune` guarantee, and Kumasi rider reviews placed above `#booking`) because strangers only call or walk into a workshop once they trust its competence and pricing.
@@ -74,11 +74,11 @@ Customers searching for Wheelhouse have a broken bike today and are comparing tw
 
 ## 4. Additional Business Improvement Beyond the Brief (Deliverable 5)
 
-### One-Tap "Send Photo on WhatsApp" Pre-Check & Dual-Mode Inquiry Flow
+### One-Tap "Send Photo on WhatsApp" Pre-Check And Dual-Mode Inquiry Flow
 
 - **What I implemented:** Directly below the hero scoreboard, I built a dedicated roadside triage banner (`Stranded or unsure which part your bike needs?`) with a pre-filled WhatsApp link (`Send Photo on WhatsApp`), paired with a live Ghana Standard Time (`Africa/Accra`) open/closed status pill in the hero and a two-mode radio switch (`Book a Repair Drop-Off` vs. `Ask a Question / Check Parts`) inside the consolidated form.
 - **Value for customers:** Everyday commuters with a flat tyre, bent gear hanger, or rusted chain often do not know technical part names or exact tube sidewall sizes. Instead of guessing, typing a long form message one-handed on the roadside, or pushing a heavy bike across Adum only to learn a rare part is out of stock, they can tap once, snap a photo in WhatsApp, and get an immediate answer.
-- **Value for Kwame's business:** Pre-filled photo messages give Kwame the exact tyre size or drivetrain damage before the rider arrives—saving bench inspection time, preventing wasted walk-ins, and converting hesitant mobile searchers who would otherwise bounce to the competitor down the road into confirmed jobs.
+- **Value for Kwame's business:** Pre-filled photo messages give Kwame the exact tyre size or drivetrain damage before the rider arrives, saving bench inspection time, preventing wasted walk-ins, and converting hesitant mobile searchers who would otherwise bounce to the competitor down the road into confirmed jobs.
 
 ---
 
