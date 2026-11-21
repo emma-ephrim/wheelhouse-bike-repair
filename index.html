@@ -46,14 +46,14 @@
           <a href="https://wa.me/233244000001" class="btn btn-wa">WhatsApp</a>
           <button
             type="button"
-            class="menu-toggle"
             id="menu-toggle"
+            class="menu-toggle"
             aria-expanded="false"
             aria-controls="primary-menu"
-            aria-label="Toggle navigation menu"
+            aria-label="Open menu"
           >
             <span class="menu-icon" aria-hidden="true">☰</span>
-            <span class="menu-label">Menu</span>
+            <span>Menu</span>
           </button>
         </div>
       </div>
@@ -76,11 +76,13 @@
         <div class="container hero-layout">
           <div class="hero-copy">
             <p
-              class="status-pill"
               id="shop-status"
+              class="status-pill"
               data-open="8"
               data-close="17.5"
               data-days="1,2,3,4,5,6"
+              aria-live="polite"
+              aria-atomic="true"
             >
               OPEN MON–SAT • 8:00 AM – 5:30 PM
             </p>
@@ -591,12 +593,14 @@
               <fieldset class="mode-fieldset">
                 <legend>What would you like to do?</legend>
                 <div class="mode-options">
-                  <label class="mode-option" for="mode-repair">
+                  <label class="mode-option is-selected" for="mode-repair">
                     <input
                       type="radio"
                       id="mode-repair"
                       name="request_type"
                       value="Repair Booking"
+                      data-prompt="What does your bike need?"
+                      data-placeholder="e.g. Flat rear tyre, snapped chain, or gears slipping"
                       checked
                     />
                     <span>Book a Repair Drop-Off</span>
@@ -607,7 +611,9 @@
                       type="radio"
                       id="mode-question"
                       name="request_type"
-                      value="General Question / Part Check"
+                      value="Question / Part Check"
+                      data-prompt="Your Question or Part Needed"
+                      data-placeholder="e.g. Do you have 26-inch inner tubes or bike locks in stock?"
                     />
                     <span>Ask a Question / Check Parts</span>
                   </label>
@@ -621,6 +627,7 @@
                     type="text"
                     id="name"
                     name="name"
+                    maxlength="80"
                     autocomplete="name"
                     placeholder="e.g. Kofi Mensah"
                     class="form-field"
@@ -634,8 +641,9 @@
                     type="tel"
                     id="phone"
                     name="phone"
+                    maxlength="30"
                     autocomplete="tel"
-                    placeholder="e.g. 0244 000 000"
+                    placeholder="e.g. 0244 000 001"
                     class="form-field"
                     required
                   />
@@ -644,13 +652,15 @@
 
               <div class="field-group">
                 <label for="issue" id="issue-label">
-                  What does your bike need? (required)
+                  <span id="issue-prompt">What does your bike need?</span>
+                  (required)
                 </label>
                 <textarea
                   id="issue"
                   name="issue"
                   rows="3"
-                  placeholder="Describe the issue (e.g. flat rear tyre, slipping gears) or ask your question"
+                  maxlength="500"
+                  placeholder="e.g. Flat rear tyre, snapped chain, or gears slipping"
                   class="form-field"
                   required
                 ></textarea>
