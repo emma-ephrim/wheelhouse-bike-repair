@@ -25,7 +25,8 @@
   --shadow-card-hover:
     0 4px 8px rgba(16, 24, 40, 0.06), 0 12px 24px rgba(16, 24, 40, 0.08);
 
-  /* Fonts */
+  /* Web fonts loaded in index.html with &display=swap (font-display: swap)
+     and system fallbacks so text never blocks rendering while fonts download */
   --font-heading: "Balsamiq Sans", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
 
@@ -36,6 +37,7 @@
   --space-4: 2rem; /* 32px */
   --space-5: 3rem; /* 48px */
   --space-6: 4rem; /* 64px */
+  --scoreboard-overlap: 2rem; /* Shared bridge offset between hero scoreboard and WhatsApp banner */
 
   --radius: 12px;
   --radius-sm: 8px;
@@ -70,7 +72,6 @@ body {
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--bg-white);
-  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -80,23 +81,39 @@ img {
   display: block;
 }
 
-/* Skip to main content link */
+/* Skip link hidden via clip-rect pattern to avoid off-screen RTL/zoom scrollbars */
 .skip-link {
   position: absolute;
-  left: -9999px;
-  top: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: var(--space-1);
+  left: var(--space-2);
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.75rem 1.25rem;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
   background-color: var(--focus-gold);
   color: var(--asphalt-950);
-  padding: 0.75rem 1.25rem;
   border-radius: var(--radius-sm);
   font-weight: 700;
   z-index: 999;
   text-decoration: none;
-}
-
-.skip-link:focus {
-  left: var(--space-2);
-  top: var(--space-1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Keyboard focus styles */
@@ -212,7 +229,6 @@ h3 {
   font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 700;
-  white-space: nowrap;
   cursor: pointer;
   transition:
     background-color 0.15s ease,
@@ -229,20 +245,16 @@ h3 {
   line-height: 1;
 }
 
-/* Main navigation */
+/* Main navigation (border lives on .nav-links on mobile so no :has() selector is needed) */
 .topnav {
   background: linear-gradient(180deg, #232730 0%, var(--asphalt-900) 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.js-enabled .topnav:not(:has(.is-open)) {
-  border-top: none;
 }
 
 .nav-links {
   list-style: none;
   margin: 0;
   padding: 0.55rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
@@ -284,18 +296,19 @@ h3 {
   outline-offset: 2px;
 }
 
-/* Buttons */
+/* Buttons (wrap allowed below 400px so 320px / 200% text never overflows horizontally) */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
   min-height: 44px;
   padding: 0.65rem 1.2rem;
   font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 700;
+  text-align: center;
   text-decoration: none;
-  white-space: nowrap;
   border-radius: var(--radius-sm);
   border: 2px solid transparent;
   box-shadow: 0 1px 2px rgba(16, 24, 40, 0.12);
@@ -305,6 +318,13 @@ h3 {
     border-color 0.15s ease,
     transform 0.1s ease,
     box-shadow 0.15s ease;
+}
+
+@media (min-width: 400px) {
+  .btn,
+  .menu-toggle {
+    white-space: nowrap;
+  }
 }
 
 .btn:active {
@@ -420,10 +440,10 @@ h3 {
   object-fit: cover;
 }
 
-/* Workshop facts strip overlapping bottom of hero */
+/* Workshop facts strip overlapping bottom of hero via --scoreboard-overlap */
 .proof-scoreboard {
   list-style: none;
-  margin: var(--space-4) 0 calc(var(--space-5) * -0.65) 0;
+  margin: var(--space-4) 0 calc(var(--scoreboard-overlap) * -1) 0;
   padding: 0;
   position: relative;
   z-index: 5;
@@ -474,11 +494,11 @@ h3 {
   color: var(--text-primary);
 }
 
-/* WhatsApp quick photo check banner */
+/* WhatsApp quick photo check banner (top padding clears --scoreboard-overlap) */
 .photo-estimate-banner {
   background-color: var(--orange-tint);
   border-bottom: 1px solid #fed7aa;
-  padding: calc(var(--space-5) * 0.95) 0 var(--space-3) 0;
+  padding: calc(var(--scoreboard-overlap) + var(--space-3)) 0 var(--space-3) 0;
 }
 
 .estimate-inner {
@@ -672,6 +692,7 @@ h3 {
 
 .journey-caption span {
   padding: 0.6rem 0.8rem;
+  min-width: 0;
 }
 
 .journey-caption span:first-child {
@@ -906,10 +927,19 @@ h3 {
     border-color 0.15s ease;
 }
 
-.mode-option:has(input:checked) {
+/* .is-selected is synced by script.js as a fallback for older browsers without :has() */
+.mode-option.is-selected {
   border-color: var(--orange-700);
   background-color: var(--orange-tint);
   box-shadow: 0 0 0 1px var(--orange-700);
+}
+
+@supports selector(:has(*)) {
+  .mode-option:has(input:checked) {
+    border-color: var(--orange-700);
+    background-color: var(--orange-tint);
+    box-shadow: 0 0 0 1px var(--orange-700);
+  }
 }
 
 .mode-option input[type="radio"] {
@@ -971,6 +1001,7 @@ h3 {
   border-left: 4px solid var(--wa-green);
   background-color: #f0fdf4;
   color: var(--text-primary);
+  overflow-wrap: break-word;
 }
 
 .form-feedback.is-error {
@@ -1018,7 +1049,6 @@ h3 {
     display: none;
   }
 
-  .js-enabled .topnav:not(:has(.is-open)),
   .topnav {
     border-top: 1px solid rgba(255, 255, 255, 0.14);
   }
@@ -1029,6 +1059,7 @@ h3 {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    border-top: none;
     padding: 0.4rem 0;
     gap: 0.35rem;
   }
