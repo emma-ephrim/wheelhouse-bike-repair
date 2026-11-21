@@ -1,7 +1,7 @@
 # EE02 Accessibility Write-Up: Wheelhouse Bike Repair
 
 - **Live site:** https://emma-ephrim.github.io/wheelhouse-bike-repair/
-- **Audit received from:** Calvin Nunana Quashie (`16 November 2026`, tested against WCAG 2.2 Level AA)
+- **Audit received from:** Calvin Nunana Quashie (`17 November 2026`, tested against WCAG 2.2 Level AA)
 
 ---
 
